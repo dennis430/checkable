@@ -1,5 +1,7 @@
 # checkable
 
+Open source. [MIT License](LICENSE), except [`packages/genesis-verifier`](packages/genesis-verifier/LICENSE), which is Apache-2.0. No contributor agreement.
+
 Side project. Check a claim against the bytes it cites, and notice when two reports are the same source.
 
 Any subject. A contract, a paper, a log, a note, a spreadsheet export. There is no server and no account. Node 20 or newer, and Python 3.10 or newer for the dependence and archive packages.
