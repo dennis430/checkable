@@ -1,0 +1,14 @@
+{
+  "claims": [{"id": "c1", "text": "The second report is a copy."}],
+  "sources": [
+    {"id": "s1", "name": "Primary", "origin_group": "primary"},
+    {"id": "s2", "name": "Secondary", "origin_group": "secondary"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "reported_assertion", "content": "statement", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "reported_assertion", "content": "statement, disputed copy", "source_id": "s2"}
+  ],
+  "relationships": [
+    {"id": "r1", "from_id": "o2", "to_id": "o1", "label": "disputed", "kind": "derivation"}
+  ]
+}

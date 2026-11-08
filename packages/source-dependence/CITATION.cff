@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: source-dependence
+message: If you use this software, cite it. The citation is not an endorsement and not a claim that a gate has passed.
+type: software
+authors:
+  - family-names: Liu
+    given-names: Dennis
+repository-code: https://github.com/dennis430/source-dependence
+url: https://github.com/dennis430/source-dependence
+license: MIT
+version: 0.1.2
+date-released: 2026-11-08
+keywords:
+  - provenance
+  - evidence
+  - source dependence

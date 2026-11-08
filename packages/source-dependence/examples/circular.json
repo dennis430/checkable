@@ -1,0 +1,15 @@
+{
+  "claims": [{"id": "c1", "text": "Event Echo happened."}],
+  "sources": [
+    {"id": "sE", "name": "Source E", "origin_group": "desk-e"},
+    {"id": "sF", "name": "Source F", "origin_group": "desk-f"}
+  ],
+  "observations": [
+    {"id": "oE", "claim_id": "c1", "type": "reported_assertion", "content": "Echo, citing F", "source_id": "sE"},
+    {"id": "oF", "claim_id": "c1", "type": "reported_assertion", "content": "Echo, citing E", "source_id": "sF"}
+  ],
+  "relationships": [
+    {"id": "r1", "from_id": "oE", "to_id": "oF", "label": "documented", "kind": "citation"},
+    {"id": "r2", "from_id": "oF", "to_id": "oE", "label": "documented", "kind": "citation"}
+  ]
+}

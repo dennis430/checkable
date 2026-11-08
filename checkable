@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# One entry point. Packages keep their own licenses and their own checks.
+set -euo pipefail
+ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+
+usage() {
+  cat <<'EOF'
+usage: ./checkable <command> [args]
+
+  test                         run every package test and the playground checks
+  quote <file> <exact text>    write a quotation receipt to stdout
+  genesis <file> <receipt>     check a receipt against a file
+  analyze <record.json>        source-dependence profile for one record
+  verify-bundle <bundle.json>  check a reconciliation bundle envelope
+  demo                         run the field-note playground
+
+A pass does not make the file genuine and does not authorize a decision.
+EOF
+}
+
+cmd="${1:-help}"
+if [[ $# -gt 0 ]]; then shift; fi
+
+case "$cmd" in
+  help|-h|--help)
+    usage
+    ;;
+  test)
+    node --test "$ROOT/tools/quote-receipt.test.mjs"
+    (cd "$ROOT/packages/genesis-verifier" && node --test test/*.test.mjs)
+    (cd "$ROOT/packages/source-dependence" && PYTHONPATH=src python3 -m pytest tests/ -q)
+    (cd "$ROOT/packages/model-evidence-archive" && python3 -m pytest tests/ -q)
+    node "$ROOT/packages/genesis-verifier/src/cli.mjs" \
+      "$ROOT/playground/note.txt" "$ROOT/playground/quote.receipt.json" >/dev/null
+    PYTHONPATH="$ROOT/packages/source-dependence/src" python3 - <<PY
+import json
+from pathlib import Path
+from source_dependence.graph import analyze, build_graph
+from source_dependence.models import Claim, Observation, Relationship, Source
+data = json.loads(Path("$ROOT/playground/dependence/shared-origin.json").read_text())
+graph = build_graph(
+    [Claim(**c) for c in data["claims"]],
+    [Observation(**o) for o in data["observations"]],
+    [Source(**s) for s in data["sources"]],
+    [Relationship(**r) for r in data["relationships"]],
+)
+profile = analyze(graph, "c1")
+assert profile.sensitivity["shared_origin_collapses_naive_count"] is True
+assert profile.sensitivity["naive_observation_count"] == 2
+assert profile.sensitivity["distinct_documented_origin_group_count"] == 1
+PY
+    echo "checkable: ok"
+    ;;
+  quote)
+    exec node "$ROOT/tools/quote-receipt.mjs" "$@"
+    ;;
+  genesis)
+    exec node "$ROOT/packages/genesis-verifier/src/cli.mjs" "$@"
+    ;;
+  analyze)
+    PYTHONPATH="$ROOT/packages/source-dependence/src" \
+      exec python3 -m source_dependence.cli analyze "$@"
+    ;;
+  verify-bundle)
+    PYTHONPATH="$ROOT/packages/source-dependence/src" \
+      exec python3 -m source_dependence.cli verify-bundle "$@"
+    ;;
+  demo)
+    echo "quotation"
+    node "$ROOT/packages/genesis-verifier/src/cli.mjs" \
+      "$ROOT/playground/note.txt" "$ROOT/playground/quote.receipt.json"
+    echo
+    echo "shared origin"
+    PYTHONPATH="$ROOT/packages/source-dependence/src" \
+      python3 -m source_dependence.cli analyze "$ROOT/playground/dependence/shared-origin.json"
+    ;;
+  *)
+    usage >&2
+    exit 64
+    ;;
+esac

@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+title: checkable
+message: Cite the package you actually ran. genesis-verifier is Apache-2.0. The rest of this repository is MIT.
+type: software
+authors:
+  - family-names: Liu
+    given-names: Dennis
+repository-code: https://github.com/dennis430/checkable
+license: MIT
+date-released: 2026-11-08
+keywords:
+  - evidence
+  - verification
+  - provenance

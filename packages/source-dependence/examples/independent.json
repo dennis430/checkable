@@ -1,0 +1,12 @@
+{
+  "claims": [{"id": "c1", "text": "Two labs reported different readings of the same quantity."}],
+  "sources": [
+    {"id": "s1", "name": "Lab North", "origin_group": "lab-north"},
+    {"id": "s2", "name": "Lab South", "origin_group": "lab-south"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "direct_observation", "content": "5.1", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "direct_observation", "content": "5.3", "source_id": "s2"}
+  ],
+  "relationships": []
+}

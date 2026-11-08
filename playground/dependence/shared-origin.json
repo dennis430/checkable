@@ -1,0 +1,37 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The ridge trail was closed at the second switchback."
+    }
+  ],
+  "sources": [
+    {"id": "s1", "name": "Ranger notice", "origin_group": "ranger-notice"},
+    {"id": "s2", "name": "Hiker repeating the notice", "origin_group": "ranger-notice"}
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "claim_id": "c1",
+      "type": "reported_assertion",
+      "content": "The ridge trail was closed at the second switchback.",
+      "source_id": "s1"
+    },
+    {
+      "id": "o2",
+      "claim_id": "c1",
+      "type": "reported_assertion",
+      "content": "Second switchback is closed, per the ranger.",
+      "source_id": "s2"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "from_id": "o2",
+      "to_id": "o1",
+      "label": "documented",
+      "kind": "derivation"
+    }
+  ]
+}

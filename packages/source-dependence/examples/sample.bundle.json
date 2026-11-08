@@ -1,0 +1,40 @@
+{
+  "version": "reconciliation.bundle.v1",
+  "manifest": {
+    "inputs": [
+      "examples/duplicate.json"
+    ],
+    "claim_id": "c1"
+  },
+  "assumptions": [],
+  "analytical_version": "0.1.2",
+  "report": {
+    "claim_id": "c1",
+    "observations_counted": 2,
+    "documented_origin_groups": [
+      "group1"
+    ],
+    "unresolved_relationships": [],
+    "assumption_conditioned_results": {},
+    "sensitivity": {
+      "naive_observation_count": 2,
+      "distinct_documented_origin_group_count": 1,
+      "shared_origin_collapses_naive_count": true,
+      "circular_component_count": 0,
+      "contradiction_edge_count": 0,
+      "disputed_edge_count": 0,
+      "note": "shared_origin_collapses_naive_count is true only when two observations carry the same documented origin group. Unknown lineage is not treated as shared origin. Exact text deduplication is not performed here."
+    },
+    "contradictions": [],
+    "unknowns": [],
+    "notes": [
+      "Root count is not a count of statistically independent observations.",
+      "Documented derivation paths are traced separately from caller-supplied origin groups.",
+      "Multiple relationship assertions between the same endpoints are preserved."
+    ],
+    "version": "0.1.0"
+  },
+  "integrity": {
+    "content_sha256": "7086853971569fb0bfb7bd50d7bcb4534bb5213eaee9bb6f433e8cc66930c696"
+  }
+}

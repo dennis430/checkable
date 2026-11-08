@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+.pytest_cache/
+*.pyc
+dist/
+build/
+*.egg-info/
+.venv/
+packages/model-evidence-archive/status/
+packages/model-evidence-archive/records/incoming/

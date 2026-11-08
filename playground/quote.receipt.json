@@ -1,0 +1,31 @@
+{
+  "receiptVersion": "genesis.receipt.v1",
+  "rule": {
+    "id": "quotation.exact",
+    "version": "1"
+  },
+  "evidence": {
+    "sha256": "5c48e22b3be2df4542551d4cf7a573b1000b787623066f3f716e9a43d35cedb1"
+  },
+  "source": {
+    "kind": "counterparty_supplied"
+  },
+  "claimStanding": "observed",
+  "claim": {
+    "text": "The ridge trail was closed at the second switchback."
+  },
+  "derivation": {
+    "type": "quotation",
+    "span": {
+      "start": 24,
+      "end": 76
+    },
+    "expectedText": "The ridge trail was closed at the second switchback."
+  },
+  "limitations": [
+    "GENUINENESS_NOT_ESTABLISHED",
+    "SOURCE_KIND_IS_DECLARED_NOT_PROVEN",
+    "SUBJECT_CONTROL_NOT_ESTABLISHED",
+    "CLAIM_TEXT_IS_NOT_INTERPRETED_BEYOND_EXACT_MATCH"
+  ]
+}

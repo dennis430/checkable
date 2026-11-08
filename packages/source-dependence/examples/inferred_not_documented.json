@@ -1,0 +1,14 @@
+{
+  "claims": [{"id": "c1", "text": "Report B derives from report A."}],
+  "sources": [
+    {"id": "s1", "name": "Desk 1", "origin_group": "desk-1"},
+    {"id": "s2", "name": "Desk 2", "origin_group": "desk-2"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "reported_assertion", "content": "original wording", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "reported_assertion", "content": "later wording", "source_id": "s2"}
+  ],
+  "relationships": [
+    {"id": "r1", "from_id": "o2", "to_id": "o1", "label": "inferred", "kind": "derivation"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "claims": [{"id": "c1", "text": "A region has no recorded observations plus one labeled report."}],
+  "sources": [
+    {"id": "s1", "name": "Field log", "origin_group": "field-1"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "direct_observation", "content": "one labeled report", "source_id": "s1"}
+  ],
+  "relationships": [],
+  "assumptions": [
+    {"id": "a1", "text": "Coverage outside the field log is unknown. Absence is not a negative observation."}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "claims": [{"id": "c1", "text": "Alpha occurred."}],
+  "sources": [
+    {"id": "s1", "name": "Wire", "origin_group": "wire-1"},
+    {"id": "s2", "name": "Reprint", "origin_group": "wire-1"},
+    {"id": "s3", "name": "Newsletter", "origin_group": "wire-1"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "reported_assertion", "content": "Alpha occurred", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "reported_assertion", "content": "Alpha occurred, reprint", "source_id": "s2"},
+    {"id": "o3", "claim_id": "c1", "type": "reported_assertion", "content": "Alpha occurred, newsletter", "source_id": "s3"}
+  ],
+  "relationships": [
+    {"id": "r1", "from_id": "o2", "to_id": "o1", "label": "documented", "kind": "derivation"},
+    {"id": "r2", "from_id": "o3", "to_id": "o1", "label": "documented", "kind": "derivation"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "claims": [{"id": "c1", "text": "Event Beta was reported three times."}],
+  "sources": [
+    {"id": "s1", "name": "Labeled wire"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "reported_assertion", "content": "Beta", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "reported_assertion", "content": "Beta again"},
+    {"id": "o3", "claim_id": "c1", "type": "reported_assertion", "content": "Beta, no source"}
+  ],
+  "relationships": []
+}

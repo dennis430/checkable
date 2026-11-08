@@ -1,0 +1,14 @@
+{
+  "claims": [{"id": "c1", "text": "Event X occurred at time T"}],
+  "sources": [
+    {"id": "s1", "name": "Source A", "origin_group": "group1"},
+    {"id": "s2", "name": "Source B (copy)", "origin_group": "group1"}
+  ],
+  "observations": [
+    {"id": "o1", "claim_id": "c1", "type": "reported_assertion", "content": "Event X at T", "source_id": "s1"},
+    {"id": "o2", "claim_id": "c1", "type": "reported_assertion", "content": "Event X at T (paraphrase)", "source_id": "s2"}
+  ],
+  "relationships": [
+    {"id": "r1", "from_id": "o2", "to_id": "o1", "label": "documented", "kind": "derivation"}
+  ]
+}
