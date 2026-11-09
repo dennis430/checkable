@@ -4,7 +4,7 @@ Open source. [MIT License](LICENSE), except [`packages/genesis-verifier`](packag
 
 Side project. Check a claim against the bytes it cites, and notice when two reports are the same source.
 
-Any subject. A contract, a paper, a log, a note, a spreadsheet export. There is no server and no account. Node 20 or newer, and Python 3.10 or newer for the dependence and archive packages.
+Any subject, as plain text. A note, a log, a markdown file, or source code. There is no server and no account. Node 20 or newer, and Python 3.10 or newer for the dependence and archive packages.
 
 This repository is where those three packages are worked on together:
 
@@ -16,7 +16,21 @@ This repository is where those three packages are worked on together:
 
 The older repositories stay up as package history. New work goes here.
 
-## Use it on a file you already have
+## Files that work
+
+There is no upload site. The command reads a file on disk.
+
+`./checkable quote` finds an exact sentence only when those characters are stored in a row in the file. It does not open Word, Excel, or a photo.
+
+| File | `quote` | Notes |
+|---|---|---|
+| `.txt`, `.md`, `.log`, source code | Yes | The sentence must occur once. A second copy is a refusal, not a guess. |
+| `.csv` saved as plain text | Yes, for a sentence. Sums of dollar amounts need a receipt, not `quote`. | LF or CRLF both work for a quotation. The CSV profiles are stricter and are for cell checks. |
+| `.html` | Only if the sentence is not split by tags | `<b>closed</b>` is not the word `closed`. |
+| PDF with real text | No | A scan, a photo, an encrypted PDF, or a custom font is unverifiable. A simple text PDF can be checked by the PDF profile, not by `quote`. |
+| `.docx`, `.xlsx`, `.png`, `.jpg` | No | Export `.txt` or a plain `.csv` first. |
+
+Send a `.txt` or `.md` file and the exact sentence copied from it. That is enough to run.
 
 ```bash
 git clone https://github.com/dennis430/checkable.git
