@@ -43,6 +43,14 @@ source-dependence verify-bundle examples/sample.bundle.json
 
 `verify-bundle` checks the envelope hash. A match does not re-run the analysis and does not establish lineage. `analysis_reproducible` stays `NOT_RUN`.
 
+To create an editable record from a directory of UTF-8 text files:
+
+```bash
+source-dependence from-directory path/to/notes --claim "the claim you are checking" > record.json
+```
+
+Keep the output outside the input directory. Nested files are included; each file retains a separate source and observation, including identical or similar text. Origin groups are left `null`, observation lineage is `unknown`, and relationships are empty. The claim is supplied by you; its relevance and truth are not inferred. Fill in documented origins afterward. Binary/container formats, unreadable text and symbolic links fail without a partial record.
+
 The other eight cases, and the command that regenerates the comparison table, are in `examples/README.md` and `docs/WALKTHROUGH.md`. The generated table is `docs/BASELINES.md`.
 
 ## Companions

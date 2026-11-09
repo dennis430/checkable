@@ -50,6 +50,15 @@ If you have two reports and you already know one copies the other:
 
 `observations_counted` is 2. `distinct_documented_origin_group_count` is 1. The origin group is whatever you wrote down. The tool does not discover it for you.
 
+To start from a directory of UTF-8 text files, including nested files:
+
+```bash
+./checkable from-directory path/to/notes --claim "the claim you are checking" > record.json
+./checkable analyze record.json
+```
+
+Write `record.json` outside the input directory. Each file becomes a separate source and observation, even when two files have identical or similar wording. Every `origin_group` is `null`, lineage is `unknown`, and no relationships are inferred. Fill in origins and documented relationships afterward. Associating the files with your supplied claim does not establish their relevance or the claim's truth. Non-text formats, invalid UTF-8, NUL bytes and symbolic links are refused without emitting a partial record.
+
 ```bash
 ./checkable demo
 ./checkable test

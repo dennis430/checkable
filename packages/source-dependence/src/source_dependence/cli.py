@@ -8,11 +8,24 @@ import click
 
 from .graph import analyze, build_graph
 from .models import Assumption, Claim, Observation, Relationship, Source
+from .directory import directory_record
 
 
 @click.group()
 def cli():
     pass
+
+
+@cli.command(name="from-directory")
+@click.argument("directory", type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.option("--claim", required=True, help="Claim to associate with these files; relevance is not inferred.")
+def from_directory_cmd(directory, claim):
+    """Emit a record for UTF-8 files; origins and lineage remain unknown."""
+    try:
+        record = directory_record(directory, claim)
+    except (ValueError, OSError) as error:
+        raise click.ClickException(str(error)) from error
+    click.echo(json.dumps(record, indent=2, ensure_ascii=False))
 
 
 @cli.command(name="analyze")

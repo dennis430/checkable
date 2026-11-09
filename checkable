@@ -11,6 +11,7 @@ usage: ./checkable <command> [args]
   quote <file> <exact text> [--nth N]  write a quotation receipt to stdout
   genesis <file> <receipt>     check a receipt against a file
   analyze <record.json>        source-dependence profile for one record
+  from-directory <dir> --claim <text>  record each text file; origins stay blank
   verify-bundle <bundle.json>  check a reconciliation bundle envelope
   demo                         run the field-note playground
 
@@ -63,6 +64,10 @@ PY
   analyze)
     PYTHONPATH="$ROOT/packages/source-dependence/src" \
       exec python3 -m source_dependence.cli analyze "$@"
+    ;;
+  from-directory)
+    PYTHONPATH="$ROOT/packages/source-dependence/src" \
+      exec python3 -m source_dependence.cli from-directory "$@"
     ;;
   verify-bundle)
     PYTHONPATH="$ROOT/packages/source-dependence/src" \
