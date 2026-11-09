@@ -73,3 +73,16 @@ def test_empty_directory_blank_claim_and_symbolic_links_are_refused(tmp_path):
     (tmp_path / "link.txt").symlink_to(tmp_path / "missing.txt")
     with pytest.raises(ValueError, match="symbolic links"):
         directory_record(tmp_path, "A claim")
+
+
+def test_symbolic_link_input_directory_is_refused_without_reading_target(tmp_path):
+    target = tmp_path / "private-notes"
+    target.mkdir()
+    (target / "note.txt").write_text("Should not be admitted via a link", encoding="utf-8")
+    linked = tmp_path / "linked-notes"
+    linked.symlink_to(target, target_is_directory=True)
+
+    result = CliRunner().invoke(cli, ["from-directory", str(linked), "--claim", "A claim"])
+    assert result.exit_code != 0
+    assert result.stdout == ""
+    assert "symbolic links" in result.stderr
