@@ -8,7 +8,7 @@ usage() {
 usage: ./checkable <command> [args]
 
   test                         run every package test and the playground checks
-  quote <file> <exact text>    write a quotation receipt to stdout
+  quote <file> <exact text> [--nth N]  write a quotation receipt to stdout
   genesis <file> <receipt>     check a receipt against a file
   analyze <record.json>        source-dependence profile for one record
   verify-bundle <bundle.json>  check a reconciliation bundle envelope

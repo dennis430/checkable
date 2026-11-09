@@ -6,4 +6,4 @@ Not a domain. A field note, so the tools are not stuck on invoices.
 
 `dependence/shared-origin.json` is two reports of that sentence from one documented origin. Counting the reports says 2. The origin group says 1.
 
-Replace both with a file of your own. A paper, a contract, a log, a thread, a lab note. If the sentence occurs twice, `./checkable quote` refuses to pick one.
+Replace both with a file of your own. A paper, a contract, a log, a thread, a lab note. If the sentence occurs twice, `./checkable quote` refuses to pick one unless you explicitly select an occurrence, for example with `--nth 2`. An out-of-range index still fails.

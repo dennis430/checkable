@@ -24,7 +24,7 @@ There is no upload site. The command reads a file on disk.
 
 | File | `quote` | Notes |
 |---|---|---|
-| `.txt`, `.md`, `.log`, source code | Yes | The sentence must occur once. A second copy is a refusal, not a guess. |
+| `.txt`, `.md`, `.log`, source code | Yes | The sentence must occur once unless you explicitly select an occurrence with `--nth`. A second copy is otherwise a refusal, not a guess. |
 | `.csv` saved as plain text | Yes, for a sentence. Sums of dollar amounts need a receipt, not `quote`. | LF or CRLF both work for a quotation. The CSV profiles are stricter and are for cell checks. |
 | `.html` | Only if the sentence is not split by tags | `<b>closed</b>` is not the word `closed`. |
 | PDF with real text | No | A scan, a photo, an encrypted PDF, or a custom font is unverifiable. A simple text PDF can be checked by the PDF profile, not by `quote`. |
@@ -40,7 +40,7 @@ pip install pytest pydantic networkx click cryptography
 ./checkable genesis path/to/file.txt receipt.json
 ```
 
-`quote` writes a receipt only when that exact text occurs once. Two matches is a refusal, not a guess. `genesis` then re-reads the file. Exit 0 means the span and the hash reproduced. It does not mean the file is genuine, the sentence is true, or anybody should act on it.
+`quote` writes a receipt only when that exact text occurs once, or when you explicitly select a match with a positive, one-based index: `./checkable quote path/to/file.txt "the exact sentence" --nth 2`. Without `--nth`, two matches is a refusal, not a guess. An out-of-range index also fails without writing a receipt. `genesis` then re-reads the file. Exit 0 means the span and the hash reproduced. It does not mean the file is genuine, the sentence is true, or anybody should act on it.
 
 If you have two reports and you already know one copies the other:
 
