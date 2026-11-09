@@ -1,0 +1,31 @@
+{
+  "receiptVersion": "genesis.receipt.v1",
+  "rule": {
+    "id": "quotation.exact",
+    "version": "1"
+  },
+  "evidence": {
+    "sha256": "37aef57b9701fb03e6e5d00e1349daca8b58cf6bb8083e69c47e152568a0bf49"
+  },
+  "source": {
+    "kind": "counterparty_supplied"
+  },
+  "claimStanding": "observed",
+  "claim": {
+    "text": "The cobalt lantern marks receipt test Q7M4 on the quiet observatory desk."
+  },
+  "derivation": {
+    "type": "quotation",
+    "span": {
+      "start": 181,
+      "end": 254
+    },
+    "expectedText": "The cobalt lantern marks receipt test Q7M4 on the quiet observatory desk."
+  },
+  "limitations": [
+    "GENUINENESS_NOT_ESTABLISHED",
+    "SOURCE_KIND_IS_DECLARED_NOT_PROVEN",
+    "SUBJECT_CONTROL_NOT_ESTABLISHED",
+    "CLAIM_TEXT_IS_NOT_INTERPRETED_BEYOND_EXACT_MATCH"
+  ]
+}

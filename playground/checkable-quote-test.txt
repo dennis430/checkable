@@ -1,0 +1,9 @@
+Checkable quote verification fixture
+
+This is a synthetic plain-text document for testing exact quotation and receipt verification. It contains no private or customer information.
+
+The cobalt lantern marks receipt test Q7M4 on the quiet observatory desk.
+
+The surrounding paragraphs provide context for the quotation. The test identifier belongs only to this fixture and does not assert a real event, signature, or verified receipt.
+
+End of test document.

@@ -32,6 +32,9 @@ case "$cmd" in
     (cd "$ROOT/packages/model-evidence-archive" && python3 -m pytest tests/ -q)
     node "$ROOT/packages/genesis-verifier/src/cli.mjs" \
       "$ROOT/playground/note.txt" "$ROOT/playground/quote.receipt.json" >/dev/null
+    node "$ROOT/packages/genesis-verifier/src/cli.mjs" \
+      "$ROOT/playground/checkable-quote-test.txt" \
+      "$ROOT/playground/checkable-quote-test.receipt.json" >/dev/null
     PYTHONPATH="$ROOT/packages/source-dependence/src" python3 - <<PY
 import json
 from pathlib import Path
