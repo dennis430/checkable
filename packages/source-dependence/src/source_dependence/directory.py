@@ -15,6 +15,8 @@ def directory_record(directory: Path, claim: str) -> dict:
     """One source and observation per UTF-8 file, including nested files. No deduplication."""
     if not claim.strip():
         raise ValueError("claim is empty")
+    if directory.is_symlink():
+        raise ValueError("symbolic links are not read: input directory")
     if not directory.is_dir():
         raise ValueError("input must be a directory of plain-text files")
     files = []
